@@ -14,6 +14,10 @@ module.exports = app => {
         }
         throw msg
     }
+	
+	function equals(val1, val2, msg) {
+		if(val1 !== val2) throw msg
+	}
 
-    return { exists, notExists }
+    return { exists, notExists, equals }
 }
