@@ -8,4 +8,6 @@ module.exports = app => {
 	app.route('/users/:id')
 		.get(app.api.user.getById)
 		.delete(app.api.user.remove)
+		
+	// app.route('/transactions')
 }
