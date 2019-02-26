@@ -1,5 +1,11 @@
 
 module.exports = app => {
 	app.post('/signup', app.api.user.save)
-	app.get('/users', app.api.user.get)
+	
+	app.route('/users')
+		.get(app.api.user.get)
+		
+	app.route('/users/:id')
+		.get(app.api.user.getById)
+		.delete(app.api.user.remove)
 }

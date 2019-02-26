@@ -12,7 +12,6 @@ module.exports = app => {
     const save = async (req, res) => {
 		
         const user = { ...req.body }
-		console.log('abc')
 
         if(req.params.id) user.id = req.params.id
 
@@ -44,7 +43,7 @@ module.exports = app => {
 		} else {
 			app.db('users')
 				.insert(user)
-				.then(_ => res.status(204).send())
+				.then(_ => res.status(201).send())
 				.catch(err => res.status(500).send(err))
 		}
 		
@@ -56,6 +55,31 @@ module.exports = app => {
 			.then(users => res.json(users))
 			.catch(err => res.status(500).send(err))
 	}
+	
+	const getById = (req, res) => {
+		app.db('users')
+			.select('id', 'name', 'email')
+			.where({ id: req.params.id }).first()
+			.then(users => res.json(users))
+			.catch(err => res.status(500).send(err))
+	}
+	
+	const remove = async (req, res) => {
+		const user = { ...req.body }
+		if(req.params.id) user.id = req.params.id
+		
+		try {
+			const deletedUser = await app.db('users')
+				.delete()
+				.where({ id: user.id })
+				
+			exists(deletedUser, "Usuário não existe!")
+			res.status(204).send()
+		} catch(msg) {
+			res.status(400).send(msg)
+		}
+		
+	}
 
-    return { save, get }
+    return { save, get, remove, getById }
 }
