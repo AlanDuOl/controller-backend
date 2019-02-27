@@ -27,12 +27,12 @@ module.exports = app => {
 			transaction.createdAt = new Date()
 			app.db('transactions')
 				.insert(transaction)
-				.then(_ => res.status(201).send()
+				.then(_ => res.status(201).send())
 				.catch(err => res.status(500).send(err))
 		}
 	}
 	
-	const remove = async (req, res) {		
+	const remove = async (req, res) => {		
 		try {
             const rowsDeleted = await app.db('transactions')
                 .where({ id: req.params.id }).del()
@@ -47,7 +47,10 @@ module.exports = app => {
             res.status(500).send(msg)
         }
     }
+	
+	const get = (req, res) => {
+		
 	}
 	
-	return { save, remove }
+	return { save, remove, get }
 }
