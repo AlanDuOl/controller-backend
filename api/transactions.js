@@ -49,8 +49,19 @@ module.exports = app => {
     }
 	
 	const get = (req, res) => {
-		
+		app.db('transactions')
+			.select('type', 'transaction', 'amount', 'description', 'transactionDate')
+			.then(transactions => res.json(transactions))
+			.catch(err => res.status(500).send(err))
 	}
 	
-	return { save, remove, get }
+	const getById = (req, res) => {
+		app.db('transactions')
+			.select('type', 'transaction', 'amount', 'description', 'transactionDate')
+			.where({ id: req.params.id })
+			.then(transactions => res.json(transactions))
+			.catch(err => res.status(500).send(err))
+	}
+	
+	return { save, remove, get, getById }
 }
