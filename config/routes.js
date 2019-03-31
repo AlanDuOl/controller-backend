@@ -11,9 +11,8 @@ module.exports = app => {
 		.get(app.api.user.getById)
 		.delete(app.api.user.remove)
 		
-	app.route('/users/:userId/transactions')
+	app.route('/transactions/insert')
 		.post(app.api.transactions.save)
-		.get(app.api.transactions.get)
 		
 	app.route('/users/:userId/transactions/:id')
 		.put(app.api.transactions.save)
