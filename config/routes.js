@@ -13,6 +13,9 @@ module.exports = app => {
 		
 	app.route('/transactions/insert')
 		.post(app.api.transactions.save)
+
+	app.route('/transactions')
+		.get(app.api.transactions.get)
 		
 	app.route('/users/:userId/transactions/:id')
 		.put(app.api.transactions.save)
