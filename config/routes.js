@@ -13,6 +13,7 @@ module.exports = app => {
 		
 	app.route('/transactions/insert')
 		.post(app.api.transactions.save)
+		.get(app.api.transactions.getLimit)
 
 	app.route('/transactions')
 		.get(app.api.transactions.get)

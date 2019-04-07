@@ -50,7 +50,16 @@ module.exports = app => {
 	
 	const get = (req, res) => {
 		app.db('transactions')
-			.select('type', 'transaction', 'amount', 'description', 'transactionDate')
+			.select('type', 'transaction', 'description', 'amount', 'transactionDate')
+			.then(transactions => res.json(transactions))
+			.catch(err => res.status(500).send(err))
+	}
+
+	const getLimit = (req, res) => {
+		app.db('transactions')
+			.select('type', 'transaction', 'description', 'amount', 'transactionDate')
+			.orderBy('transactionDate', 'desc')
+			.limit(10)
 			.then(transactions => res.json(transactions))
 			.catch(err => res.status(500).send(err))
 	}
@@ -63,5 +72,5 @@ module.exports = app => {
 			.catch(err => res.status(500).send(err))
 	}
 	
-	return { save, remove, get, getById }
+	return { save, remove, get, getById, getLimit }
 }
