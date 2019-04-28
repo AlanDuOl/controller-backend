@@ -15,8 +15,8 @@ module.exports = app => {
 		.post(app.api.transactions.save)
 		.get(app.api.transactions.getLimit)
 
-	app.route('/transactions')
-		.get(app.api.transactions.get)
+	app.route('/transactions/:userId')
+		.get(app.api.transactions.getById)
 		
 	app.route('/users/:userId/transactions/:id')
 		.put(app.api.transactions.save)
