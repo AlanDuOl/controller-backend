@@ -68,6 +68,7 @@ module.exports = app => {
 		app.db('transactions')
 			.select('id', 'type', 'transaction', 'description', 'amount', 'transactionDate')
 			.where({ userId: req.params.id })
+			.orderBy('transactionDate', 'desc')
 			.then(transactions => res.json(transactions))
 			.catch(err => res.status(500).send(err))
 	}
