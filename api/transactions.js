@@ -58,6 +58,7 @@ module.exports = app => {
 	const getLimit = (req, res) => {
 		app.db('transactions')
 			.select('type', 'transaction', 'description', 'amount', 'transactionDate')
+			.where({ userId: req.params.id })
 			.orderBy('transactionDate', 'desc')
 			.limit(10)
 			.then(transactions => res.json(transactions))
