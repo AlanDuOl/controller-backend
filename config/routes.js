@@ -11,15 +11,11 @@ module.exports = app => {
 		.get(app.api.user.getById)
 		.delete(app.api.user.remove)
 		
-	app.route('/transactions/insert')
+	app.route('/transactions')
 		.post(app.api.transactions.save)
 		.get(app.api.transactions.getLimit)
 
-	app.route('/transactions/:userId')
-		.get(app.api.transactions.getById)
-		
-	app.route('/users/:userId/transactions/:id')
-		.put(app.api.transactions.save)
+	app.route('/transactions/:id')
 		.get(app.api.transactions.getById)
 		.delete(app.api.transactions.remove)
 }

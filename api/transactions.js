@@ -67,7 +67,7 @@ module.exports = app => {
 	const getById = (req, res) => {
 		app.db('transactions')
 			.select('id', 'type', 'transaction', 'description', 'amount', 'transactionDate')
-			.where({ userId: req.params.userId })
+			.where({ userId: req.params.id })
 			.then(transactions => res.json(transactions))
 			.catch(err => res.status(500).send(err))
 	}
