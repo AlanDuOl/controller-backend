@@ -13,6 +13,8 @@ module.exports = app => {
 		
 	app.route('/transactions')
 		.post(app.api.transactions.save)
+
+	app.route('/transactions/:id/:limit')
 		.get(app.api.transactions.getLimit)
 
 	app.route('/transactions/:id')

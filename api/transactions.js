@@ -60,7 +60,7 @@ module.exports = app => {
 			.select('type', 'transaction', 'description', 'amount', 'transactionDate')
 			.where({ userId: req.params.id })
 			.orderBy('transactionDate', 'desc')
-			.limit(10)
+			.limit(req.params.limit)
 			.then(transactions => res.json(transactions))
 			.catch(err => res.status(500).send(err))
 	}
