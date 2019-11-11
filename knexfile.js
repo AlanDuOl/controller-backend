@@ -37,7 +37,7 @@ module.exports = {
             host: 'ec2-54-75-249-16.eu-west-1.compute.amazonaws.com',
             user: 'yalbfainbznvmz',
             password: 'f74bba1252f3e5d7bfbead10cb57f294143e2538f600a764408086dc506e8e70',
-            database: 'postgres://yalbfainbznvmz:f74bba1252f3e5d7bfbead10cb57f294143e2538f600a764408086dc506e8e70@ec2-54-75-249-16.eu-west-1.compute.amazonaws.com:5432/dat6vkuviocndi'
+            database: 'dat6vkuviocndi'
 
         },
 
