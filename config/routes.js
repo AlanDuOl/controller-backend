@@ -2,7 +2,7 @@
 module.exports = app => {
 
 	app.use(function(req, res, next) {
-		res.header("Access-Control-Allow-Origin", "https://controlle.herokuapp.com"); // update to match the domain you will make the request from
+		res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
   		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   		next();
 	})
@@ -10,6 +10,9 @@ module.exports = app => {
 	app.post('/signup', app.api.user.save)
 	app.post('/signin', app.api.auth.signin)
 	app.post('/validateToken', app.api.auth.validateToken)
+
+	app.route('/')
+		.get(_ => console.log('server working'))
 	
 	app.route('/users')
 		.get(app.api.user.get)

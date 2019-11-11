@@ -11,6 +11,6 @@ consign()
     .then('./config/routes.js')
     .into(app)
 
-app.listen(4000, () => {
-    console.log('Server running...')
+app.listen(process.env.DB_PORT, () => {
+    console.log('Server running on port', process.env.DB_PORT)
 })

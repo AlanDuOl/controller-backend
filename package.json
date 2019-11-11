@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
-    "start": "nodemon",
-    "production": "pm2 start index.js --name controller-backend"
+    "start-dev": "nodemon",
+    "start": "pm2 start index.js --name controller-backend",
+    "migrate": "knex migrate:latest"
   },
   "keywords": [],
   "author": "",
