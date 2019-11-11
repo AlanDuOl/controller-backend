@@ -2,7 +2,7 @@
 module.exports = app => {
 
 	app.use(function(req, res, next) {
-		res.header("Access-Control-Allow-Origin", "postgres://yalbfainbznvmz:f74bba1252f3e5d7bfbead10cb57f294143e2538f600a764408086dc506e8e70@ec2-54-75-249-16.eu-west-1.compute.amazonaws.com:5432/dat6vkuviocndi"); // update to match the domain you will make the request from
+		res.header("Access-Control-Allow-Origin", "https://controlle.herokuapp.com/"); // update to match the domain you will make the request from
   		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   		next();
 	})
