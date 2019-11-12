@@ -27,11 +27,9 @@ module.exports = app => {
                 exp: now + (60 * 60 * 8 * 1)
             }
 
-            console.log("secret: ", process.env.DB_SECRET)
-
             res.json({
                 ...payload,
-                token: jwt.encode(payload, process.env.DB_SECRET)
+                token: jwt.encode(payload, "wereete/$sdf&*asdfw134jef1234diis##239")
             })
         }  catch(e) {
             console.log(e)
@@ -42,7 +40,7 @@ module.exports = app => {
         const userData = req.body || null
         try {
             if(userData) {
-                const token = jwt.decode(userData.token, process.env.DB_SECRET)
+                const token = jwt.decode(userData.token, "wereete/$sdf&*asdfw134jef1234diis##239")
                 if(new Date(token.exp * 1000) > new Date()) {
                     return res.send(true)
                 }
