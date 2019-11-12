@@ -27,7 +27,7 @@ module.exports = app => {
                 exp: now + (60 * 60 * 8 * 1)
             }
 
-            console.log("SECRET: ", process.env.DB_SECRET)
+            console.log("secret: ", process.env.DB_SECRET)
 
             res.json({
                 ...payload,
