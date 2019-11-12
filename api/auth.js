@@ -27,7 +27,7 @@ module.exports = app => {
                 iat: now,
                 exp: now + (60 * 60 * 8 * 1)
             }
-    
+            console.log(process.env.authSecret)
             res.json({
                 ...payload,
                 token: jwt.encode(payload, process.env.authSecret)
