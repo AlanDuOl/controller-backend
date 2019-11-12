@@ -28,9 +28,11 @@ module.exports = app => {
                 exp: now + (60 * 60 * 8 * 1)
             }
 
+            Console.log(process.env.DB_SECRET)
+
             res.json({
                 ...payload,
-                token: jwt.encode(payload, process.env.authSecret)
+                token: jwt.encode(payload, process.env.DB_SECRET)
             })
         }  catch(e) {
             console.log(e)
@@ -41,7 +43,7 @@ module.exports = app => {
         const userData = req.body || null
         try {
             if(userData) {
-                const token = jwt.decode(userData.token, process.env.authSecret)
+                const token = jwt.decode(userData.token, process.env.DB_SECRET)
                 if(new Date(token.exp * 1000) > new Date()) {
                     return res.send(true)
                 }
