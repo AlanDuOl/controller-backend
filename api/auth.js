@@ -1,4 +1,4 @@
-// const { authSecret } = require('../.env')
+require('dotenv').config()
 const jwt = require('jwt-simple')
 const bcrypt = require('bcrypt-nodejs')
 
@@ -27,7 +27,7 @@ module.exports = app => {
                 iat: now,
                 exp: now + (60 * 60 * 8 * 1)
             }
-            console.log(process.env.authSecret)
+
             res.json({
                 ...payload,
                 token: jwt.encode(payload, process.env.authSecret)
