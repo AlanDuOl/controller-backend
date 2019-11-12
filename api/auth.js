@@ -28,8 +28,6 @@ module.exports = app => {
                 exp: now + (60 * 60 * 8 * 1)
             }
 
-            Console.log(process.env.DB_SECRET)
-
             res.json({
                 ...payload,
                 token: jwt.encode(payload, process.env.DB_SECRET)
