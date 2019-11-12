@@ -12,5 +12,5 @@ consign()
     .into(app)
 
 app.listen(process.env.NODE_ENV === 'production' ? process.env.DB_PRD_PORT : process.env.DB_DEV_PORT, () => {
-    console.log('Server running on port', process.env.DB_PORT)
+    console.log('Server running...')
 })
