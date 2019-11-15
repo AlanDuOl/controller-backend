@@ -21,13 +21,13 @@ module.exports = app => {
 			app.db('transactions')
 				.update(transaction)
 				.where({ id: transaction.id })
-				.then(_ => res.status(204).send())
+				.then(_ => res.status(204).send("Operação realizada com sucesso!"))
 				.catch(err => res.status(500).send(err))
 		} else {
 			transaction.createdAt = new Date()
 			app.db('transactions')
 				.insert(transaction)
-				.then(_ => res.status(201).send())
+				.then(_ => res.status(201).send("Operação realizada com sucesso!"))
 				.catch(err => res.status(500).send(err))
 		}
 	}
